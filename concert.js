@@ -1,5 +1,3 @@
-var keys = require("./keys");
-
 var fs = require("fs");
 
 var axios = require("axios");
@@ -15,7 +13,7 @@ function myConcert(userInput) {
   }
 
     var artist = userInput;
-    var url = "http://www.omdbapi.com/" + artist + "" + keys.bandsInTown;
+    var url = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp"
 
     axios.get(url).then(
       function (response) {
@@ -23,12 +21,13 @@ function myConcert(userInput) {
       for (var i =0; i < response.data.length; i++){
 
         console.log('Venue: ${response.data[i].venue.name}');
-        console.log('Location: ${response.data[i].venue.city}'+""+ '${response.data[i].venue.region}');
-        console.log('Date of the Event: ${response.data[i].datetime}','YYYY-MM-DDTHH:mmss',.format('MM/DD/YY') );
+        console.log('Location: ${response.data[i].venue.city}'+ '${response.data[i].venue.region}');
+        console.log('Date of the Event: ${response.data[i].datetime}','YYYY-MM-DDTHH:mmss'.format('MM/DD/YY') );
       }
 
     }
-  }  
+    
+  )}
 
 
 

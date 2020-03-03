@@ -1,5 +1,3 @@
-var keys = require("./keys");
-
 var fs = require("fs");
 
 var axios = require("axios");
@@ -9,12 +7,12 @@ function myMovies(userInput) {
     function spotifySong(movieName) {
         if(!movieName){
           console.log("Need to assign default value to song!")
-          movieName = "Men in Black"
+          movieName = "Mr.Nobody"
 }
 
-var url = "http://www.omdbapi.com/" + movie + "";
+var url = "https://www.omdbapi.com/?t=" + value + "&y=&plot=short&apikey=trilogy";
 
-axios.get(url).then{
+axios.get(url).then(
     function (response) {
 
         console.log('Title: ${movie.data.Title}');
@@ -24,6 +22,6 @@ axios.get(url).then{
         console.log('Produced in: ${movie.data.country}');
         console.log('Plot: ${movie.data.plot}');
         console.log('Starring: ${movie.data.Actors}');
-    }
-  }
+       }
+     )}
 }
