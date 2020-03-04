@@ -2,26 +2,24 @@ var fs = require("fs");
 
 var axios = require("axios");
 
-function myMovies(userInput) {
+function myMovie(userInput) {
+  if (!userInput) {
+    console.log("Need to assign default value to song!");
+    userInput = "Mr.Nobody";
+  }
 
-    function spotifySong(movieName) {
-        if(!movieName){
-          console.log("Need to assign default value to song!")
-          movieName = "Mr.Nobody"
+  var url =
+    "https://www.omdbapi.com/?t=" + userInput + "&y=&plot=short&apikey=trilogy";
+
+  axios.get(url).then(function(response) {
+    console.log(`Title: ${response.data.Title}`);
+    console.log(`Released: ${response.data.Year}`);
+    console.log(`IMDB Rating: ${response.data.Ratings[1].Value}`);
+    console.log(`Rotton Tomatoes Rating: ${response.data.Ratings[1].Value}`);
+    console.log(`Produced in: ${response.data.country}`);
+    console.log(`Plot: ${response.data.plot}`);
+    console.log(`Starring: ${response.data.Actors}`);
+  });
 }
 
-var url = "https://www.omdbapi.com/?t=" + value + "&y=&plot=short&apikey=trilogy";
-
-axios.get(url).then(
-    function (response) {
-
-        console.log('Title: ${movie.data.Title}');
-        console.log('Released: ${movie.data.Year}');
-        console.log('IMDB Rating: ${movie.data.Ratings[1].Value}');
-        console.log('Rotton Tomatoes Rating: ${movie.data.Ratings[1].Value}');
-        console.log('Produced in: ${movie.data.country}');
-        console.log('Plot: ${movie.data.plot}');
-        console.log('Starring: ${movie.data.Actors}');
-       }
-     )}
-}
+module.exports = myMovie;

@@ -13,7 +13,7 @@ var term = process.argv.slice(3).join(" ");
 function spotifySong(songName) {
     if(!songName){
       console.log("Need to assign default value to song!")
-      songName = "Men in Black"
+      songName = "I Want it That Way"
     }
     spotify.search({ type: "track", query: songName, limit: 5 }, function(
       err,data) {
@@ -29,3 +29,4 @@ function spotifySong(songName) {
       });
     });
   }
+  module.exports = spotifySong

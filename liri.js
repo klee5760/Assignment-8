@@ -2,7 +2,7 @@ require("dotenv").config();
 
 let fs = require("fs");
 
-var mySpotify = require("./song.js")
+var spotifySong = require("./song.js")
 
 var myMovie= require("./movie.js")
 
@@ -17,11 +17,11 @@ callProgram(command, term);
 function callProgram(command, term) {
   console.log(command, term);
   if (command === "movie-this") {
-    axiosMovie(term)
+    myMovie(term)
   } else if (command === "spotify-this-song") {
     spotifySong(term);
   } else if (command === "concert-this") {
-    concert()
+    myConcert()
   } else if (command === "do-what-it-says") {
   } else {
     console.log("Please enter valid command!");
